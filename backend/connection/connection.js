@@ -1,16 +1,17 @@
 const mongoose = require("mongoose");
 
-const connection = async (req, res) => {
+// Middleware to handle connection
+const connection = async (req, res, next) => {
   try {
     await mongoose
       .connect(
-        "mongodb+srv://harshiltomar20:JGLiqDlwTekBJtne@cluster0.dbydwsm.mongodb.net/"
+        "mongodb+srv://harshiltomar20:todoapplication123@cluster0.dbydwsm.mongodb.net/"
       )
-      .then(() => console.log("Connected"));
+      .then(() => {
+        console.log("Connected");
+      });
   } catch (error) {
-    res.status(400).json({
-      message: "Not Connected",
-    });
+    console.error(error);
   }
 };
 
