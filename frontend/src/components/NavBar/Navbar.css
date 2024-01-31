@@ -1,0 +1,14 @@
+.user-png {
+  width: 30px;
+  height: 30px;
+}
+
+nav .navbar-brand {
+  color: rgba(255, 0, 0, 0.8);
+}
+
+.btn-nav {
+  background-color: rgba(255, 0, 0, 0.8);
+  border-radius: 5px;
+  color: aliceblue !important;
+}
