@@ -1,0 +1,72 @@
+/* Todo.css */
+.todo {
+  position: relative;
+}
+
+.todo-inputs {
+  border: none;
+  outline: none;
+}
+
+.todo-inputs-div {
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.todo-card {
+  border: 1px solid black;
+}
+
+.todo-card-p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.card-icons {
+  font-size: 18px;
+}
+
+.del {
+  color: rgba(240, 0, 0, 0.87);
+}
+
+.card-icon-head {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.card-icons:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.home-btn {
+  background-color: rgba(255, 0, 0, 0.8);
+  margin-top: 30px;
+  border-radius: 5px;
+  border-color: rgba(240, 0, 0, 0.87);
+  color: aliceblue !important;
+}
+
+.delete-div {
+  background-color: #f0f0f0;
+}
+
+.update-div {
+  background-color: red;
+  color: white; /* Assuming you want white text on red background */
+}
+
+.todo-update {
+  width: 100%;
+  height: 80vh;
+  position: absolute;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  background-color: blanchedalmond;
+  display: none;
+}
+
+.update {
+  height: 100%;
+}

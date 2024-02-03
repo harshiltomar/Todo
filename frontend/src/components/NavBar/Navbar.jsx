@@ -1,16 +1,17 @@
 import React from "react";
 import "./Navbar.css";
 import { FaSwatchbook } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#" style={{ color: "red" }}>
+        <Link className="navbar-brand" to="/" style={{ color: "red" }}>
           <b>
             <FaSwatchbook /> TODOist
           </b>
-        </a>
+        </Link>
 
         <button
           className="navbar-toggler"
@@ -27,43 +28,43 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto ms-auto mb-2 mb-lg-0">
             <li className="nav-item mx-2">
-              <a className="nav-link active" href="#">
+              <Link className="nav-link active" to="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item mx-2">
-              <a className="nav-link active" href="#">
+              <Link className="nav-link active" to="/about">
                 About Us
-              </a>
+              </Link>
             </li>
             <li className="nav-item mx-2">
-              <a className="nav-link active" href="#">
+              <Link className="nav-link active" to="/todo">
                 TODO
-              </a>
+              </Link>
             </li>
             <li className="nav-item mx-2">
-              <a className="nav-link active btn-nav" href="#">
+              <Link className="nav-link active btn-nav" to="/signup">
                 Sign Up
-              </a>
+              </Link>
             </li>
             <li className="nav-item active mx-2">
-              <a className="nav-link active btn-nav" href="#">
+              <Link className="nav-link active btn-nav" to="/signin">
                 Sign In
-              </a>
+              </Link>
             </li>
             <li className="nav-item active mx-2">
-              <a className="nav-link active btn-nav" href="#">
+              <Link className="nav-link active btn-nav" to="/">
                 Logout
-              </a>
+              </Link>
             </li>
             <li className="nav-item active">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="#">
                 <img
                   className="img-fliud user-png"
                   alt="user icon"
                   src="https://cdn-icons-png.flaticon.com/512/2566/2566166.png"
                 />
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
