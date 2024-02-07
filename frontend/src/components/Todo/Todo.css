@@ -1,5 +1,8 @@
 /* Todo.css */
 .todo {
+  width: 100%;
+  min-height: 100vh;
+  max-height: auto;
   position: relative;
 }
 

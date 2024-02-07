@@ -36,6 +36,11 @@ const Todo = () => {
     setArray(newArray);
   };
 
+  const dis = (value) => {
+    console.log(value);
+    document.getElementById("todo-update").style.display = value;
+  };
+
   return (
     <>
       <div className="todo">
@@ -79,6 +84,7 @@ const Todo = () => {
                       body={item.body}
                       id={index}
                       delid={del}
+                      display={dis}
                     />
                   </div>
                 ))}
@@ -86,10 +92,10 @@ const Todo = () => {
           </div>
         </div>
       </div>
-      <div className="todo-update">
-        <div className="container">
+      <div className="todo-update" id="todo-update">
+        <div className="container update">
           {" "}
-          <Update />
+          <Update display={dis} />
         </div>
       </div>
     </>
@@ -97,3 +103,5 @@ const Todo = () => {
 };
 
 export default Todo;
+
+//21.01
