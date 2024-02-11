@@ -10,6 +10,7 @@ import Todo from "./components/Todo/Todo";
 import { authActions } from "./store/index.store";
 import { useDispatch } from "react-redux";
 import Pricing from "./Pricing/Pricing";
+import BizPricing from "./Pricing/BizPricing";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/forteams" element={<BizPricing />} />
         </Routes>
       </Router>
       <Footer />

@@ -2,6 +2,7 @@ import React from "react";
 import "./Todo.css";
 import { MdDelete } from "react-icons/md";
 import { GrDocumentUpdate } from "react-icons/gr";
+import { IoMdDoneAll } from "react-icons/io";
 
 const TodoCards = ({
   title,
@@ -26,7 +27,9 @@ const TodoCards = ({
             tobeUpdate(updateId);
           }}
         >
-          <GrDocumentUpdate className="card-icons" /> Update
+          <div className="rounded-icon">
+            <GrDocumentUpdate className="card-icons" /> Update
+          </div>
         </div>
         <div
           className="d-flex justify-content-center align-items-center card-icon-head px-2 py-1 text-danger delete-div"
@@ -34,7 +37,15 @@ const TodoCards = ({
             delid(id);
           }}
         >
-          <MdDelete className="card-icons del" /> Delete
+          <MdDelete className="card-icons del" />
+        </div>
+        <div
+          className="d-flex justify-content-center align-items-center card-icon-head px-2 py-1 complete-div"
+          onClick={() => {
+            delid(id);
+          }}
+        >
+          <IoMdDoneAll className="" /> Done
         </div>
       </div>
     </div>

@@ -18,6 +18,8 @@
 
 .todo-card {
   border: 1px solid black;
+  border-radius: 5px;
+  background-color: rgb(255, 238, 238);
 }
 
 .todo-card-p {
@@ -27,6 +29,7 @@
 
 .card-icons {
   font-size: 18px;
+  border-radius: 5px;
 }
 
 .del {
@@ -51,12 +54,20 @@
 }
 
 .delete-div {
-  background-color: #f0f0f0;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+.complete-div {
+  background-color: #adffaa;
+  color: #288f25;
+  border-radius: 5px;
 }
 
 .update-div {
   background-color: red;
-  color: white; /* Assuming you want white text on red background */
+  color: white;
+  border-radius: 5px;
 }
 
 .todo-update {

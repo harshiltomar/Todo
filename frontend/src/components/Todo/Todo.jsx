@@ -28,7 +28,7 @@ const Todo = () => {
     } else {
       if (id) {
         await axios
-          .post(`${window.location.origin}/api/v2/addTask`, {
+          .post("http://localhost:3000/api/v2/addTask", {
             title: Inputs.title,
             body: Inputs.body,
             id: id,
@@ -50,7 +50,7 @@ const Todo = () => {
   const del = async (Cardid) => {
     if (id) {
       await axios
-        .delete(`${window.location.origin}/api/v2/deleteTask/${Cardid}`, {
+        .delete(`http://localhost:3000/api/v2/deleteTask/${Cardid}`, {
           data: { id: id },
         })
         .then(() => {
@@ -72,25 +72,28 @@ const Todo = () => {
 
   useEffect(() => {
     if (id) {
-      const fetch = async () => {
-        await axios
-          .get(`${window.location.origin}/api/v2/getTasks/${id}`)
-          .then((respone) => {
-            //sets the id todos in cards
-            setArray(respone.data.list);
-          });
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(
+            `http://localhost:3000/api/v2/getTasks/${id}`
+          );
+          setArray(response.data.list);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
       };
-      fetch();
+      fetchData();
     } else {
       toast.error("Please SignUp or SignIn First");
     }
-  }, [submit]);
+  }, [submit, id]);
 
   return (
     <>
       <div className="todo">
         <ToastContainer />
         <div className="todo-main container d-flex justify-content-center align-items-center my-4 flex-column">
+          <p>Add Your Tasks Here !</p>
           <div className="d-flex flex-column todo-inputs-div w-lg-50 w-100 p-1">
             <input
               type="text"

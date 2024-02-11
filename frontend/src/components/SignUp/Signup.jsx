@@ -22,7 +22,7 @@ const Signup = () => {
   const submit = async (e) => {
     e.preventDefault();
     axios
-      .post(`${window.location.origin}/api/v1/register`, Inputs)
+      .post("http://localhost:3000/api/v1/register", Inputs)
       .then((response) => {
         console.log(response);
         if (response.data.message === "User Already Exists") {
@@ -73,9 +73,9 @@ const Signup = () => {
               <button className="btn-signup p-2" onClick={submit}>
                 Sign Up
               </button>
-              <h4>
+              <p className="mt-4">
                 Already a register user ? <Link to="/signin">SIGNIN</Link>
-              </h4>
+              </p>
             </div>
           </div>
           <div

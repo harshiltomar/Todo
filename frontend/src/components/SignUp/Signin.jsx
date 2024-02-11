@@ -5,6 +5,7 @@ import "./Signup.css";
 import HeadingComp from "./HeadingComp";
 import axios from "axios";
 import { authActions } from "../../store/index.store";
+import { Link } from "react-router-dom";
 
 const Signin = () => {
   const history = useNavigate();
@@ -24,7 +25,7 @@ const Signin = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${window.location.origin}/api/v1/signin`,
+        "http://localhost:3000/api/v1/signin",
         Inputs
       );
       console.log(response.data);
@@ -65,6 +66,9 @@ const Signin = () => {
               <button className="btn-signup p-2" onClick={submit}>
                 Sign In
               </button>
+              <p className="mt-4">
+                New to TODOist? <Link to="/signup">SIGNUP</Link>
+              </p>
             </div>
           </div>
           <div
