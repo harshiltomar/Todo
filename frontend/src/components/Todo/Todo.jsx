@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Todo.css";
 import TodoCards from "./TodoCards";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Update from "./Update";
+import axios from "axios";
+
+let id = sessionStorage.getItem("id");
+let toUpdateArray = [];
 
 const Todo = () => {
   const [Inputs, setInputs] = useState({ title: "", body: "" });
@@ -18,28 +22,69 @@ const Todo = () => {
     setInputs({ ...Inputs, [name]: value });
   };
 
-  const submit = () => {
+  const submit = async () => {
     if (Inputs.title === "" || Inputs.body === "") {
       toast.error("Either Title or Body is Empty !");
     } else {
-      console.log(Inputs);
-      setArray([...Array, Inputs]);
-      setInputs({ title: "", body: "" });
-      toast.success("Your Task is Added");
-      toast.error("Task is added but not Saved! Please Signup/ SignIn");
+      if (id) {
+        await axios
+          .post(`${window.location.origin}/api/v2/addTask`, {
+            title: Inputs.title,
+            body: Inputs.body,
+            id: id,
+          })
+          .then((response) => {
+            console.log(response);
+          });
+        setInputs({ title: "", body: "" });
+        toast.success("Your Task is Added");
+      } else {
+        setArray([...Array, Inputs]);
+        setInputs({ title: "", body: "" });
+        toast.success("Your Task is Added");
+        toast.error("Task is added but not Saved! Please Signup/ SignIn");
+      }
     }
   };
 
-  const del = (id) => {
-    const newArray = [...Array];
-    newArray.splice(id, 1);
-    setArray(newArray);
+  const del = async (Cardid) => {
+    if (id) {
+      await axios
+        .delete(`${window.location.origin}/api/v2/deleteTask/${Cardid}`, {
+          data: { id: id },
+        })
+        .then(() => {
+          toast.success("Your Task is Deleted");
+        });
+    } else {
+      toast.error("Please SignUp or SignIn First!");
+    }
   };
 
   const dis = (value) => {
     console.log(value);
     document.getElementById("todo-update").style.display = value;
   };
+
+  const update = (value) => {
+    toUpdateArray = Array[value];
+  };
+
+  useEffect(() => {
+    if (id) {
+      const fetch = async () => {
+        await axios
+          .get(`${window.location.origin}/api/v2/getTasks/${id}`)
+          .then((respone) => {
+            //sets the id todos in cards
+            setArray(respone.data.list);
+          });
+      };
+      fetch();
+    } else {
+      toast.error("Please SignUp or SignIn First");
+    }
+  }, [submit]);
 
   return (
     <>
@@ -82,9 +127,11 @@ const Todo = () => {
                     <TodoCards
                       title={item.title}
                       body={item.body}
-                      id={index}
+                      id={item._id}
                       delid={del}
                       display={dis}
+                      updateId={index}
+                      tobeUpdate={update}
                     />
                   </div>
                 ))}
@@ -95,7 +142,7 @@ const Todo = () => {
       <div className="todo-update" id="todo-update">
         <div className="container update">
           {" "}
-          <Update display={dis} />
+          <Update display={dis} update={toUpdateArray} />
         </div>
       </div>
     </>
@@ -104,4 +151,4 @@ const Todo = () => {
 
 export default Todo;
 
-//21.01
+//8.275

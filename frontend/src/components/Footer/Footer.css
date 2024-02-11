@@ -1,0 +1,10 @@
+.bg-body-tertiary {
+  background-color: rgb(253, 223, 223);
+  text-decoration: black;
+}
+
+.btn-start {
+  background-color: rgba(255, 0, 0, 0.8);
+  border-radius: 5px;
+  color: aliceblue !important;
+}

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 import HeadingComp from "./HeadingComp";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const history = useNavigate();
@@ -21,8 +22,9 @@ const Signup = () => {
   const submit = async (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/api/v1/register", Inputs)
+      .post(`${window.location.origin}/api/v1/register`, Inputs)
       .then((response) => {
+        console.log(response);
         if (response.data.message === "User Already Exists") {
           alert(response.data.message);
         } else {
@@ -71,6 +73,9 @@ const Signup = () => {
               <button className="btn-signup p-2" onClick={submit}>
                 Sign Up
               </button>
+              <h4>
+                Already a register user ? <Link to="/signin">SIGNIN</Link>
+              </h4>
             </div>
           </div>
           <div

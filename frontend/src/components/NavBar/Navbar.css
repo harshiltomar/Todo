@@ -12,3 +12,9 @@ nav .navbar-brand {
   border-radius: 5px;
   color: aliceblue !important;
 }
+
+.nav-item:hover {
+  background-color: rgba(224, 224, 224, 0.8);
+  border-radius: 5px;
+  font-weight: 400;
+}

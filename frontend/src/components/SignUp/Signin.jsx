@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./Signup.css";
 import HeadingComp from "./HeadingComp";
 import axios from "axios";
+import { authActions } from "../../store/index.store";
 
 const Signin = () => {
   const history = useNavigate();
+  const dispatch = useDispatch();
   const [Inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -19,11 +22,22 @@ const Signin = () => {
   //SUBMIT CODE FOR BACKEND INTEGRATION
   const submit = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:3000/api/v1/signin", Inputs)
-      .then((response) => {
-        console.log(alert(response.data.message));
-      });
+    try {
+      const response = await axios.post(
+        `${window.location.origin}/api/v1/signin`,
+        Inputs
+      );
+      console.log(response.data);
+      if (response.data) {
+        sessionStorage.setItem("id", response.data.user._id);
+        dispatch(authActions.login());
+        history("/todo");
+      } else {
+        console.log("Respone data or _id not found in the response. ");
+      }
+    } catch (error) {
+      console.log("An error occured", error);
+    }
   };
 
   return (
@@ -57,7 +71,7 @@ const Signin = () => {
             className="col-lg-4 column d-flex justify-content align-items-center"
             style={{ height: "100vh" }}
           >
-            <HeadingComp first="Sign" second="Up" />
+            <HeadingComp first="Sign" second="In" />
           </div>
         </div>
       </div>

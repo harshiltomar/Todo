@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./components/NavBar/Navbar";
 import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
@@ -7,8 +7,19 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Signup from "./components/SignUp/Signup";
 import Signin from "./components/SignUp/Signin";
 import Todo from "./components/Todo/Todo";
+import { authActions } from "./store/index.store";
+import { useDispatch } from "react-redux";
+import Pricing from "./Pricing/Pricing";
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const id = sessionStorage.getItem("id");
+    if (id) {
+      dispatch(authActions.login());
+    }
+  }, []);
+
   return (
     <div>
       <Router>
@@ -19,6 +30,7 @@ const App = () => {
           <Route path="/todo" element={<Todo />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
+          <Route path="/pricing" element={<Pricing />} />
         </Routes>
       </Router>
       <Footer />
