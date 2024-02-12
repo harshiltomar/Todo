@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Todo.css";
 import axios from "axios";
 import { toast } from "react-toastify";
+import "./Update.css";
 
 const Update = ({ display, update }) => {
   useEffect(() => {

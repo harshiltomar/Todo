@@ -1,4 +1,5 @@
 import React from "react";
+import "./Pricing.css";
 
 const BizPricing = () => {
   return (
