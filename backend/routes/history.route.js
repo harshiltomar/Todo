@@ -3,6 +3,26 @@ const User = require("../models/user.model");
 const History = require("../models/history.model");
 const List = require("../models/list.model");
 
+// Route to fetch history tasks
+router.get("/historyTask", async (req, res) => {
+  try {
+    // Fetch all history tasks from the database
+    const historyTasks = await History.find({}, "title body"); // Only retrieve title and body fields
+
+    // Extract titles and bodies from history tasks
+    const arrayOfPairs = historyTasks.map((task) => ({
+      title: task.title,
+      body: task.body,
+    }));
+
+    // Send the array of pairs as a response
+    res.status(200).json(arrayOfPairs);
+  } catch (error) {
+    console.error("Error fetching history tasks:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 //CREATE IN HISTORY AND DELETE FROM LIST
 router.post("/historyTask/:id", async (req, res) => {
   try {

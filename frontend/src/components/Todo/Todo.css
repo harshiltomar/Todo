@@ -87,3 +87,10 @@
 .sidebar {
   background-color: rgb(255, 237, 237);
 }
+
+.todo-card-history {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #eeeeee;
+  color: #494949;
+}
