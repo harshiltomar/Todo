@@ -19,7 +19,6 @@
 .todo-card {
   border: 1px solid black;
   border-radius: 5px;
-  background-color: rgb(255, 238, 238);
 }
 
 .todo-card-p {
@@ -83,4 +82,8 @@
 
 .update {
   height: 100%;
+}
+
+.sidebar {
+  background-color: rgb(255, 237, 237);
 }

@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import "./Todo.css";
-import TodoCards from "./TodoCards";
+import TodoCards from "../TodoCards";
 import { ToastContainer, toast } from "react-toastify";
-import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import Update from "./Update";
+import Update from "../Update";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 let id = sessionStorage.getItem("id");
 let toUpdateArray = [];
 
-const Todo = () => {
+const History = () => {
   const [Inputs, setInputs] = useState({ title: "", body: "" });
   const [Array, setArray] = useState([]);
 
@@ -62,18 +61,6 @@ const Todo = () => {
     }
   };
 
-  const tick = async (Cardid) => {
-    if (id) {
-      await axios
-        .post(`http://localhost:3000/api/v3/historyTask/${Cardid}`, {
-          data: { id: id },
-        })
-        .then(() => console.log("Task movied to history"));
-    } else {
-      console.log("Not able to move to history");
-    }
-  };
-
   const dis = (value) => {
     console.log(value);
     document.getElementById("todo-update").style.display = value;
@@ -96,6 +83,8 @@ const Todo = () => {
         }
       };
       fetchData();
+    } else {
+      toast.error("Please SignUp or SignIn First");
     }
   }, [submit, id]);
 
@@ -126,33 +115,7 @@ const Todo = () => {
         </div>
         <ToastContainer />
         <div className="todo-main container d-flex justify-content-center align-items-center my-4 col-7 flex-column">
-          <p>Add Your Tasks Here ✨</p>
-          <div className="d-flex flex-column todo-inputs-div w-lg-50 w-100 p-1">
-            <input
-              type="text"
-              placeholder="TITLE"
-              className="my-2 p-2 todo-inputs"
-              onClick={show}
-              name="title"
-              value={Inputs.title}
-              style={{ borderBottom: "1px solid black" }}
-              onChange={change}
-            />
-            <textarea
-              id="textarea"
-              type="text"
-              placeholder="BODY"
-              className="p-2 todo-inputs"
-              name="body"
-              value={Inputs.body}
-              onChange={change}
-            />
-          </div>
-          <div className="d-flex justify-content-end">
-            <button className="home-btn px-2 py-1" onClick={submit}>
-              Add Task &rarr;
-            </button>
-          </div>
+          <p>Your Tasks History ✨</p>
           <div className="todo-main container d-flex justify-content-center align-items-center my-4 flex-column col-8">
             <div className="container-fluid">
               <div className="column jusity-content-center">
@@ -167,7 +130,6 @@ const Todo = () => {
                         display={dis}
                         updateId={index}
                         tobeUpdate={update}
-                        tickid={tick}
                       />
                     </div>
                   ))}
@@ -186,6 +148,4 @@ const Todo = () => {
   );
 };
 
-export default Todo;
-
-//8.275
+export default History;

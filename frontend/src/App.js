@@ -3,6 +3,7 @@ import Navbar from "./components/NavBar/Navbar";
 import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
 import About from "./components/About/About";
+import History from "./components/Todo/History/History";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Signup from "./components/SignUp/Signup";
 import Signin from "./components/SignUp/Signin";
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/signin" element={<Signin />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/forteams" element={<BizPricing />} />
+          <Route path="/history" element={<History />} />
         </Routes>
       </Router>
       <Footer />
