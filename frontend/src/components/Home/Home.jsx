@@ -23,7 +23,10 @@ const Home = () => {
               Become focused, Organized and calm with <br />
               TODOist. The World's #1 task manager Application.
             </p>
-            <Link to="/signin" className="nav-link active btn-start w-25 px-3">
+            <Link
+              to="/signin"
+              className="nav-link active btn-start w-25 px-3 mt-4"
+            >
               Let's Organise &rarr;
             </Link>
           </div>

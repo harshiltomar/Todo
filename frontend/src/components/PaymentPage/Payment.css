@@ -286,3 +286,7 @@ input[type="radio"] {
 .btn-primary {
   background-color: rgba(255, 0, 0, 0.8);
 }
+
+.submit {
+  color: rgba(255, 0, 0, 0.8);
+}

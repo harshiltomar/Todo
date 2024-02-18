@@ -43,7 +43,7 @@ const Todo = () => {
         setArray([...Array, Inputs]);
         setInputs({ title: "", body: "" });
         toast.success("Your Task is Added");
-        toast.error("Task is added but not Saved! Please Signup/ SignIn");
+        //toast.error("Task is added but not Saved! Please Signup/ SignIn");
       }
     }
   };

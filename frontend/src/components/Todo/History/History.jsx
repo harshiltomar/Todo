@@ -25,7 +25,7 @@ const History = () => {
           toast.success("Your Task is Deleted");
         });
     } else {
-      toast.error("Please SignUp or SignIn First!");
+      //toast.error("Please SignUp or SignIn First!");
     }
   };
 
