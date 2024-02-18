@@ -12,6 +12,8 @@ import { authActions } from "./store/index.store";
 import { useDispatch } from "react-redux";
 import Pricing from "./Pricing/Pricing";
 import BizPricing from "./Pricing/BizPricing";
+import Profile from "./components/Profile/Profile";
+import Payment from "./components/PaymentPage/Payment";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -35,6 +37,8 @@ const App = () => {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/forteams" element={<BizPricing />} />
           <Route path="/history" element={<History />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/payment" element={<Payment />} />
         </Routes>
       </Router>
       <Footer />

@@ -1,10 +1,11 @@
 import React from "react";
 import "./Pricing.css";
+import { Link } from "react-router-dom";
 
 const Pricing = () => {
   return (
     <div className="container-fluid">
-      <div className="container p-5">
+      <div className="container-price p-5">
         <div className="row">
           <div className="col-lg-4 col-md-12 mb-4">
             <div className="card h-100 shadow-lg">
@@ -62,12 +63,14 @@ const Pricing = () => {
                 </li>
               </ul>
               <div className="card-body text-center">
-                <button
-                  className="btn btn-outline-primary btn-lg"
-                  style={{ borderRadius: "30px" }}
-                >
-                  Select
-                </button>
+                <Link to="/payment">
+                  <button
+                    className="btn btn-outline-primary btn-lg"
+                    style={{ borderRadius: "30px" }}
+                  >
+                    Select
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -129,12 +132,14 @@ const Pricing = () => {
                 </li>
               </ul>
               <div className="card-body text-center">
-                <button
-                  className="btn btn-outline-primary btn-lg"
-                  style={{ borderRadius: "30px" }}
-                >
-                  Select
-                </button>
+                <Link to="/payment">
+                  <button
+                    className="btn btn-outline-primary btn-lg"
+                    style={{ borderRadius: "30px" }}
+                  >
+                    Select
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -197,12 +202,14 @@ const Pricing = () => {
                 </li>
               </ul>
               <div className="card-body text-center">
-                <button
-                  className="btn btn-outline-primary btn-lg"
-                  style={{ borderRadius: "30px" }}
-                >
-                  Select
-                </button>
+                <Link to="/payment">
+                  <button
+                    className="btn btn-outline-primary btn-lg"
+                    style={{ borderRadius: "30px" }}
+                  >
+                    Select
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

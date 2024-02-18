@@ -7,6 +7,7 @@ require("./connection/connection");
 const auth = require("./routes/auth.route");
 const list = require("./routes/list.route");
 const history = require("./routes/history.route");
+const image = require("./routes/image.route");
 
 // to receive and send data in json format
 app.use(express.json());
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1", auth);
 app.use("/api/v2", list);
 app.use("/api/v3", history);
+app.use("/api/v4", image);
 
 app.listen(3000, () => {
   console.log("Server started");

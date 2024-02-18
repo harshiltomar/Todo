@@ -76,7 +76,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item active">
-                  <Link className="nav-link" to="#">
+                  <Link className="nav-link" to="/profile">
                     <img
                       className="img-fliud user-png"
                       alt="user icon"

@@ -1,5 +1,6 @@
 import React from "react";
 import "./Pricing.css";
+import { Link } from "react-router-dom";
 
 const BizPricing = () => {
   return (
@@ -67,12 +68,14 @@ const BizPricing = () => {
                 </li>
               </ul>
               <div className="card-body text-center">
-                <button
-                  className="btn btn-outline-primary btn-lg"
-                  style={{ borderRadius: "30px" }}
-                >
-                  Select
-                </button>
+                <Link to="/payment">
+                  <button
+                    className="btn btn-outline-primary btn-lg"
+                    style={{ borderRadius: "30px" }}
+                  >
+                    Select
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

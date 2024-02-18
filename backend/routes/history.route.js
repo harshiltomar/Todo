@@ -39,6 +39,7 @@ router.post("/historyTask/:id", async (req, res) => {
       title: listItem.title,
       body: listItem.body,
       user: listItem.user._id, // Keep track of the user who created the task in history
+      createdAt: new Date(),
     });
 
     // Save the history item

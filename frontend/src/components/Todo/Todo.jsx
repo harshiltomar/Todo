@@ -68,7 +68,7 @@ const Todo = () => {
         .post(`http://localhost:3000/api/v3/historyTask/${Cardid}`, {
           data: { id: id },
         })
-        .then(() => console.log("Task movied to history"));
+        .then(() => console.log("Task moved to history"));
     } else {
       console.log("Not able to move to history");
     }

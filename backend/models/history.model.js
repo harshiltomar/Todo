@@ -15,6 +15,11 @@ const historySchema = new mongoose.Schema(
         ref: "User",
       },
     ],
+    createdAt: {
+      type: Date,
+      expires: 604800,
+      default: Date.now,
+    },
   },
   { timestamps: true }
 );
