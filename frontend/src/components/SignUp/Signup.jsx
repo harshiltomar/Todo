@@ -4,6 +4,7 @@ import "./Signup.css";
 import HeadingComp from "./HeadingComp";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { PiSparkleFill } from "react-icons/pi";
 
 const Signup = () => {
   const history = useNavigate();
@@ -73,8 +74,13 @@ const Signup = () => {
               <button className="btn-signup p-2" onClick={submit}>
                 Sign Up
               </button>
+              <div class="row mt-4">
+                  <div class="col-md-12">
+                    <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" href="#"><img src="https://img.icons8.com/color/16/000000/google-logo.png"/> Signup Using Google</a>
+                  </div>
+              </div>
               <p className="mt-4">
-                Already a register user ? <Link to="/signin">SIGNIN</Link>
+                Already a register user ? <Link to="/signin">SIGNIN<PiSparkleFill/></Link>
               </p>
             </div>
           </div>
