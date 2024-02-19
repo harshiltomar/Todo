@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Pricing.css";
 import { Link } from "react-router-dom";
 
 const Pricing = () => {
+  const [pricing, SetPricing] = useState("");
+
   return (
     <div className="container-fluid">
       <div className="container-price p-5">
@@ -63,10 +65,11 @@ const Pricing = () => {
                 </li>
               </ul>
               <div className="card-body text-center">
-                <Link to="/payment">
+                <Link to={`/payment/${8}`}>
                   <button
                     className="btn btn-outline-primary btn-lg"
                     style={{ borderRadius: "30px" }}
+                    onClick={()=> SetPricing(8)}
                   >
                     Select
                   </button>
@@ -132,10 +135,11 @@ const Pricing = () => {
                 </li>
               </ul>
               <div className="card-body text-center">
-                <Link to="/payment">
+                <Link to={`/payment/${20}`}>
                   <button
                     className="btn btn-outline-primary btn-lg"
                     style={{ borderRadius: "30px" }}
+                    onClick={()=> SetPricing(20)}
                   >
                     Select
                   </button>
@@ -202,10 +206,11 @@ const Pricing = () => {
                 </li>
               </ul>
               <div className="card-body text-center">
-                <Link to="/payment">
+                <Link to={`/payment/${50}`}>
                   <button
                     className="btn btn-outline-primary btn-lg"
                     style={{ borderRadius: "30px" }}
+                    onClick={()=> SetPricing(50)}
                   >
                     Select
                   </button>

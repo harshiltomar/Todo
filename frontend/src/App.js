@@ -39,7 +39,7 @@ const App = () => {
           <Route path="/forteams" element={<BizPricing />} />
           <Route path="/history" element={<History />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/payment" element={<Payment />} />
+          <Route path="/payment/:price" element={<Payment />} />
           <Route path="/congrats" element={<Congrats />} />
         </Routes>
       </Router>

@@ -68,7 +68,7 @@ const BizPricing = () => {
                 </li>
               </ul>
               <div className="card-body text-center">
-                <Link to="/payment">
+                <Link to={`/payment/${70}`}>
                   <button
                     className="btn btn-outline-primary btn-lg"
                     style={{ borderRadius: "30px" }}

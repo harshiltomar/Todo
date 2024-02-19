@@ -62,13 +62,13 @@ label.box {
 #one:checked ~ label.first,
 #two:checked ~ label.second,
 #three:checked ~ label.third {
-  border-color: #7700ff;
+  border-color: rgba(255, 0, 0, 0.8);
 }
 
 #one:checked ~ label.first .circle,
 #two:checked ~ label.second .circle,
 #three:checked ~ label.third .circle {
-  border-color: #7a34ca;
+  border-color: rgba(255, 0, 0, 0.8);
   background-color: #fff;
 }
 
@@ -129,15 +129,19 @@ input[type="radio"] {
   top: 6px;
 }
 
+.form-select {
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white
+}
 .form-control:focus,
 .form-select:focus {
   box-shadow: none;
   outline: none;
-  border: 1px solid #7700ff;
+  border: 1px solid rgba(255, 0, 0, 0.8);;
 }
 
 .border:focus-within {
-  border: 1px solid #7700ff !important;
+  border: 1px solid rgba(255, 0, 0, 0.8) !important;
 }
 
 .box-2 .card-atm .form-control {
@@ -187,7 +191,7 @@ input[type="radio"] {
 }
 
 .box-2 .box-inner-2 .btn.btn-primary:hover {
-  background-color: #7a34ca;
+  background-color: rgba(255, 0, 0, 0.8);
 }
 
 .box-2 .box-inner-2 .btn.btn-primary .fas {
@@ -285,6 +289,10 @@ input[type="radio"] {
 
 .btn-primary {
   background-color: rgba(255, 0, 0, 0.8);
+}
+
+.btn-primary:hover {
+  background-color: rgb(255, 0, 0);
 }
 
 .submit {

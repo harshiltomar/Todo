@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Payment.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
-const Payment = () => {
+const Payment = ({setPricing}) => {
+
+  const {price} = useParams();
+  
   const [activeIndex, setActiveIndex] = useState(0);
 
   const nextSlide = () => {
@@ -44,7 +47,7 @@ const Payment = () => {
             <p class="fw-bold">TODOist Subscription</p>
             <p class="fw-lighter">
               <span style={{ color: "red" }} class="fas fa-dollar-sign"></span>
-              33.00+
+              {price}.00+
             </p>
           </div>
           <div
@@ -143,7 +146,7 @@ const Payment = () => {
             <div>
               <p class="dis fw-bold mb-2">Card details</p>
               <div class="d-flex align-items-center justify-content-between card-atm border rounded">
-                <div class="fab fa-cc-visa ps-3"></div>
+                <div class="fab fa-cc-visa ps-3 ml-2"></div>
                 <input
                   type="text"
                   class="form-control"
@@ -204,7 +207,7 @@ const Payment = () => {
                     <p>Subtotal</p>
                     <p>
                       <span class="fas fa-dollar-sign"></span>
-                      33.00
+                      {price}.00
                     </p>
                   </div>
                   <div class="d-flex align-items-center justify-content-between mb-2">
@@ -212,13 +215,13 @@ const Payment = () => {
                       VAT<span>(20%)</span>
                     </p>
                     <p>
-                      <span class="fas fa-dollar-sign"></span>2.80
+                      <span class="fas fa-dollar-sign"></span>{Number(price)*0.2}.00
                     </p>
                   </div>
                   <div class="d-flex align-items-center justify-content-between mb-2">
                     <p class="fw-bold">Total</p>
                     <p class="fw-bold">
-                      <span class="fas fa-dollar-sign"></span>35.80
+                      <span class="fas fa-dollar-sign"></span>{Number(price)*1.2}.00
                     </p>
                   </div>
                   <div class="btn btn-primary mt-2" onClick={sendEmail}>
