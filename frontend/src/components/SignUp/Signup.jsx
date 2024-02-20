@@ -75,12 +75,22 @@ const Signup = () => {
                 Sign Up
               </button>
               <div class="row mt-4">
-                  <div class="col-md-12">
-                    <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" href="#"><img src="https://img.icons8.com/color/16/000000/google-logo.png"/> Signup Using Google</a>
-                  </div>
+                <div class="col-md-12">
+                  <a
+                    class="btn btn-lg btn-google btn-block text-uppercase btn-outline"
+                    href="#"
+                  >
+                    <img src="https://img.icons8.com/color/16/000000/google-logo.png" />{" "}
+                    Signup Using Google
+                  </a>
+                </div>
               </div>
               <p className="mt-4">
-                Already a register user ? <Link to="/signin">SIGNIN<PiSparkleFill/></Link>
+                Already a register user ?{" "}
+                <Link to="/signin">
+                  SIGNIN
+                  <PiSparkleFill />
+                </Link>
               </p>
             </div>
           </div>

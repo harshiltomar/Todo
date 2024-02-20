@@ -42,13 +42,13 @@ const Todo = () => {
       } else {
         setArray([...Array, Inputs]);
         setInputs({ title: "", body: "" });
-        toast.success("Your Task is Added");
-        //toast.error("Task is added but not Saved! Please Signup/ SignIn");
+        toast.error("Task is added but not Saved! Please Signup/ SignIn");
       }
     }
   };
 
   const del = async (Cardid) => {
+    console.log(id);
     if (id) {
       await axios
         .delete(`http://localhost:3000/api/v2/deleteTask/${Cardid}`, {
@@ -66,7 +66,7 @@ const Todo = () => {
     if (id) {
       await axios
         .post(`http://localhost:3000/api/v3/historyTask/${Cardid}`, {
-          data: { id: id },
+          id: id,
         })
         .then(() => console.log("Task moved to history"));
     } else {
@@ -85,19 +85,16 @@ const Todo = () => {
 
   useEffect(() => {
     if (id) {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get(
-            `http://localhost:3000/api/v2/getTasks/${id}`
-          );
-          setArray(response.data.list);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
+      const fetch = async () => {
+        await axios
+          .get(`http://localhost:3000/api/v2/getTasks/${id}`)
+          .then((response) => {
+            setArray(response.data.list);
+          });
       };
-      fetchData();
+      fetch();
     }
-  }, [submit, id]);
+  }, [submit]);
 
   return (
     <>

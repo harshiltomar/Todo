@@ -19,6 +19,8 @@
 .todo-card {
   border: 1px solid black;
   border-radius: 5px;
+  background-color: rgba(255, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .todo-card-p {
@@ -91,6 +93,7 @@
 .todo-card-history {
   border: 1px solid black;
   border-radius: 5px;
-  background-color: #eeeeee;
-  color: #494949;
+  opacity: 0.9;
+  background-color: rgba(240, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }

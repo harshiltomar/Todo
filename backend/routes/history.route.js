@@ -4,22 +4,14 @@ const History = require("../models/history.model");
 const List = require("../models/list.model");
 
 // Route to fetch history tasks
-router.get("/historyTask", async (req, res) => {
-  try {
-    // Fetch all history tasks from the database
-    const historyTasks = await History.find({}, "title body"); // Only retrieve title and body fields
-
-    // Extract titles and bodies from history tasks
-    const arrayOfPairs = historyTasks.map((task) => ({
-      title: task.title,
-      body: task.body,
-    }));
-
-    // Send the array of pairs as a response
-    res.status(200).json(arrayOfPairs);
-  } catch (error) {
-    console.error("Error fetching history tasks:", error);
-    res.status(500).json({ message: "Internal server error" });
+router.get("/historyTask/:id", async (req, res) => {
+  const list = await History.findById({ user: req.params.id }).sort({
+    createdAt: -1,
+  });
+  if (list.length !== 0) {
+    res.status(200).json({ list });
+  } else {
+    res.status(200).json({ message: "No Tasks" });
   }
 });
 
@@ -28,6 +20,8 @@ router.post("/historyTask/:id", async (req, res) => {
   try {
     // Find the list item to move to history
     const listItemId = req.params.id;
+    const { id } = req.body;
+    console.log(id);
     const listItem = await List.findById(listItemId).populate("user");
 
     if (!listItem) {
@@ -38,7 +32,7 @@ router.post("/historyTask/:id", async (req, res) => {
     const historyItem = new History({
       title: listItem.title,
       body: listItem.body,
-      user: listItem.user._id, // Keep track of the user who created the task in history
+      user: id, // Keep track of the user who created the task in history
       createdAt: new Date(),
     });
 
@@ -46,11 +40,10 @@ router.post("/historyTask/:id", async (req, res) => {
     await historyItem.save();
 
     // Remove the list item from the user's list array
-    const id = req.params.id;
-    const existingUser = await User.findByIdAndUpdate(id, {
+    const existingUser = await User.findByIdAndUpdate(listItemId, {
       $pull: { list: req.params.id },
     });
-    console.log(req.params.id);
+
     await List.findByIdAndDelete(req.params.id);
 
     // Send the response after both operations have completed

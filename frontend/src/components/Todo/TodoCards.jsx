@@ -16,7 +16,7 @@ const TodoCards = ({
   tobeUpdate,
 }) => {
   return (
-    <div className="d-flex justify-content-between p-3 todo-card">
+    <div className="d-flex justify-content-between p-2 todo-card">
       <div class="d-flex">
         <div
           class=""
@@ -24,11 +24,11 @@ const TodoCards = ({
             tickid(id);
           }}
         >
-          <CiSquareCheck style={{ color: "blue" }} class="m-1 mr-2" />
+          <CiSquareCheck style={{ color: "white" }} class="m-1 mr-2" />
         </div>
         <div className="d-flex flex-column">
-          <h5>{title}</h5>
-          <p className="todo-card-p">{body.split("", 77)}...</p>
+          <h5 style={{ color: "white" }}>{title}</h5>
+          {/* <p className="todo-card-p">{body.split("", 77)}...</p> */}
         </div>
       </div>
       <div className="d-flex">
@@ -42,13 +42,13 @@ const TodoCards = ({
           <div className="rounded-icon">
             <GrDocumentUpdate
               className="card-icons"
-              style={{ color: "blue" }}
+              style={{ color: "white" }}
             />
           </div>
         </div>
         <div
           className=""
-          style={{ color: "red" }}
+          style={{ color: "white" }}
           onClick={() => {
             delid(id);
           }}

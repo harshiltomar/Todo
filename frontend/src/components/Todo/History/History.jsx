@@ -4,9 +4,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Update from "../Update";
 import axios from "axios";
+import "./History.css";
 import { Link } from "react-router-dom";
 
 let id = sessionStorage.getItem("id");
+console.log(id);
 let toUpdateArray = [];
 
 const History = () => {
@@ -40,20 +42,15 @@ const History = () => {
 
   useEffect(() => {
     const fetchHistoryTasks = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:3000/api/v3/historyTask"
-        );
-        const arrayOfPairs = response.data;
-        setArrayOfPairs(arrayOfPairs); // Set the fetched data to arrayOfPairs
-      } catch (error) {
-        console.error("Error fetching history tasks:", error);
-        setArrayOfPairs([]); // In case of error, set an empty array
-      }
+      await axios
+        .get(`http://localhost:3000/api/v3/historyTask/${id}`, { id: id })
+        .then((response) => {
+          setArray(response.data.list);
+        });
     };
-
     fetchHistoryTasks();
   }, []); // Run only once when component mounts
+  console.log(ArrayOfPairs);
 
   return (
     <>
