@@ -111,3 +111,14 @@
     justify-content: space-between;
   }
   
+.btn-outline-primary {
+  background-color: #ffffff;
+  color: rgba(240, 0, 0, 0.8);
+  font-weight: bolder;
+}
+
+.btn-outline-age {
+  background-color: rgba(240, 0, 0, 0.8);
+  color:#ffffff;
+  border: none;
+}

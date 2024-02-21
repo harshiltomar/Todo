@@ -44,7 +44,7 @@ const Dashboard = () => {
             <p>Tasks Completed</p>
             <h4>31</h4>
           </div>
-          <div className="d-flex todo-inputs-div w-lg-50 w-100 p-1 mt-4 p-4">
+          <div className="d-flex todo-inputs-div w-lg-50 w-100 p-1 mt-4 p-4 profile-div">
             <div>
             <img
               src="https://cdn-icons-png.flaticon.com/512/2566/2566166.png"
@@ -52,25 +52,25 @@ const Dashboard = () => {
               className="img-fluid"
             />
             </div>
-            <div className="d-flex space-between">
-              <div className="flex-grow-1">
+            <div className="d-flex">
+              <div className="flex-grow-1 profile-div">
                 <div className="d-flex">
                   <h5 className="mb-1 mr-4">Harshil Tomar</h5>
                   <MdEdit />
                 </div>
                 <p className="mb-2 pb-1 work">Software Engineer</p>
-                <div className="d-flex justify-content-start rounded-3 p-2 mb-2 div2">
+                <div className="d-flex justify-content-start rounded-3 p-2 mb-2 div2" style={{backgroundColor: "white", borderRadius: "5px"}}>
                   <div>
                     <p className="small text-muted mb-1">Articles</p>
-                    <p className="mb-0">41</p>
+                    <p className="mb-0" style={{color: "red"}}>41</p>
                   </div>
                   <div className="px-3">
                     <p className="small text-muted mb-1">Followers</p>
-                    <p className="mb-0">976</p>
+                    <p className="mb-0" style={{color: "red"}}>976</p>
                   </div>
                   <div>
                     <p className="small text-muted mb-1">Rating</p>
-                    <p className="mb-0">8.5</p>
+                    <p className="mb-0" style={{color: "red"}}>8.5</p>
                   </div>
                 </div>
                 <div className="d-flex pt-1">
@@ -80,7 +80,7 @@ const Dashboard = () => {
                   >
                     Male
                   </button>
-                  <button type="button" className="btn btn-primary ml-2">
+                  <button type="button" className="btn btn-outline-age ml-2">
                     Age: 22
                   </button>
                 </div>
