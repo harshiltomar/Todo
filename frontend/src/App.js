@@ -15,6 +15,7 @@ import BizPricing from "./Pricing/BizPricing";
 import Profile from "./components/Profile/Profile";
 import Payment from "./components/PaymentPage/Payment";
 import Congrats from "./components/Congrats/Congrats";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/payment/:price" element={<Payment />} />
           <Route path="/congrats" element={<Congrats />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </Router>
       <Footer />

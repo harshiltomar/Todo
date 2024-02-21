@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./Todo.css";
 import TodoCards from "./TodoCards";
 import { ToastContainer, toast } from "react-toastify";
-import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import Update from "./Update";
 import axios from "axios";
+import Sidebar from "../Sidebar";
 
 let id = sessionStorage.getItem("id");
 let toUpdateArray = [];
@@ -100,26 +100,7 @@ const Todo = () => {
     <>
       <div className="todo d-flex">
         <div class="col-2 sidebar">
-          <Link to="/todo">
-            <div class="mt-4 d-flex">
-              <img
-                class="mr-2"
-                src="https://cdn-icons-png.flaticon.com/128/7246/7246748.png"
-                style={{ maxHeight: "30px" }}
-              />
-              <h5>Tasks</h5>
-            </div>
-          </Link>
-          <Link to="/history">
-            <div class="mt-4 d-flex">
-              <img
-                class="mr-2"
-                src="https://cdn-icons-png.flaticon.com/128/2550/2550251.png"
-                style={{ maxHeight: "30px" }}
-              />
-              <h5>History</h5>
-            </div>
-          </Link>
+          <Sidebar/>
         </div>
         <ToastContainer />
         <div className="todo-main container d-flex justify-content-center align-items-center my-4 col-7 flex-column">
@@ -185,4 +166,3 @@ const Todo = () => {
 
 export default Todo;
 
-//8.275

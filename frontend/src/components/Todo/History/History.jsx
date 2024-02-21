@@ -6,6 +6,7 @@ import Update from "../Update";
 import axios from "axios";
 import "./History.css";
 import { Link } from "react-router-dom";
+import Sidebar from "../../Sidebar";
 
 let id = sessionStorage.getItem("id");
 console.log(id);
@@ -56,31 +57,11 @@ const History = () => {
     <>
       <div className="todo d-flex">
         <div class="col-2 sidebar">
-          <Link to="/todo">
-            <div class="mt-4 d-flex">
-              <img
-                class="mr-2"
-                src="https://cdn-icons-png.flaticon.com/128/7246/7246748.png"
-                style={{ maxHeight: "30px" }}
-              />
-              <h5>Tasks</h5>
-            </div>
-          </Link>
-          <Link to="/history">
-            <div class="mt-4 d-flex">
-              <img
-                class="mr-2"
-                src="https://cdn-icons-png.flaticon.com/128/2550/2550251.png"
-                style={{ maxHeight: "30px" }}
-              />
-              <h5>History</h5>
-            </div>
-          </Link>
+          <Sidebar/>
         </div>
         <ToastContainer />
         <div className="todo-main container d-flex justify-content-center align-items-center my-4 col-7 flex-column">
-          <h4>Your Task History :</h4>
-
+        <p>Task History ✨</p>
           <div className="todo-main container d-flex justify-content-center align-items-center my-4 flex-column col-8">
             <div className="container-fluid">
               <div className="column jusity-content-center">

@@ -1,0 +1,113 @@
+.todo {
+    width: 100%;
+    min-height: 100vh;
+    max-height: auto;
+    position: relative;
+  }
+  
+  .todo-inputs {
+    border: none;
+    outline: none;
+  }
+  
+  .todo-inputs-div {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    background-color: rgba(240, 0, 0, 0.8);
+    color: #ffffff;
+  }
+  
+  .todo-card {
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgba(255, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .todo-card-p {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  
+  .card-icons {
+    font-size: 18px;
+    border-radius: 5px;
+  }
+  
+  .del {
+    color: rgba(240, 0, 0, 0.87);
+  }
+  
+  .card-icon-head {
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .card-icons:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  }
+  
+  .home-btn {
+    background-color: rgba(255, 0, 0, 0.8);
+    margin-top: 30px;
+    border-radius: 5px;
+    border-color: rgba(240, 0, 0, 0.87);
+    color: aliceblue !important;
+  }
+  
+  .delete-div {
+    background-color: #ffffff;
+    border-radius: 5px;
+  }
+  
+  .complete-div {
+    background-color: #adffaa;
+    color: #288f25;
+    border-radius: 5px;
+  }
+  
+  .update-div {
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+  }
+
+  .todo-main {
+    margin-top: 4px;
+  }
+  
+  .todo-update {
+    width: 100%;
+    height: 80vh;
+    position: absolute;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    background-color: blanchedalmond;
+    display: none;
+  }
+  
+  .update {
+    height: 100%;
+  }
+
+  .side-menu:hover {
+    background-color: rgba(255, 120, 120, 0.8);
+  }
+  
+  .sidebar {
+    background-color: rgba(240, 0, 0, 0.8);
+  }
+  
+  .todo-card-history {
+    border: 1px solid black;
+    border-radius: 5px;
+    opacity: 0.9;
+    background-color: rgba(240, 0, 0, 0.87);
+    color: rgba(255, 255, 255, 0.87);
+  }
+
+  .profile-div {
+    justify-content: space-between;
+  }
+  
