@@ -16,19 +16,17 @@ const History = () => {
   const [Inputs, setInputs] = useState({ title: "", body: "" });
   const [Array, setArray] = useState([]);
 
-  const [ArrayOfPairs, setArrayOfPairs] = useState([]); // Declare arrayOfPairs at the top
-
   const del = async (Cardid) => {
     if (id) {
       await axios
-        .delete(`http://localhost:3000/api/v2/deleteTask/${Cardid}`, {
+        .delete(`http://localhost:3000/api/v3/deleteHistoryTask/${Cardid}`, {
           data: { id: id },
         })
         .then(() => {
           toast.success("Your Task is Deleted");
         });
     } else {
-      //toast.error("Please SignUp or SignIn First!");
+      toast.error("Please SignUp or SignIn First!");
     }
   };
 
@@ -47,11 +45,11 @@ const History = () => {
         .get(`http://localhost:3000/api/v3/historyTask/${id}`, { id: id })
         .then((response) => {
           setArray(response.data.list);
+          console.log(response.data.list);
         });
     };
     fetchHistoryTasks();
   }, []); // Run only once when component mounts
-  console.log(ArrayOfPairs);
 
   return (
     <>
@@ -65,8 +63,8 @@ const History = () => {
           <div className="todo-main container d-flex justify-content-center align-items-center my-4 flex-column col-8">
             <div className="container-fluid">
               <div className="column jusity-content-center">
-                {ArrayOfPairs &&
-                  ArrayOfPairs.map((item, index) => (
+                {Array &&
+                  Array.map((item, index) => (
                     <div class="mx-5 my-2" key={index}>
                       <TodoHistoryCards
                         class="todocard-history"

@@ -5,7 +5,7 @@ const List = require("../models/list.model");
 
 // Route to fetch history tasks
 router.get("/historyTask/:id", async (req, res) => {
-  const list = await History.findById({ user: req.params.id }).sort({
+  const list = await History.find({ user: req.params.id }).sort({
     createdAt: -1,
   });
   if (list.length !== 0) {
@@ -53,6 +53,18 @@ router.post("/historyTask/:id", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+router.delete("/deleteHistoryTask/:id", async (req, res) => {
+  try {
+    const { id } = req.body;
+
+    await History.findByIdAndDelete(req.params.id).then(() => {
+      res.status(200).json({ message: "Task Deleted from History" });
+    });
+  } catch (error) {
+    console.log(error);
   }
 });
 
