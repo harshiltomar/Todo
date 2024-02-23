@@ -4,10 +4,9 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
-const Payment = ({setPricing}) => {
+const Payment = ({ setPricing }) => {
+  const { price } = useParams();
 
-  const {price} = useParams();
-  
   const [activeIndex, setActiveIndex] = useState(0);
 
   const nextSlide = () => {
@@ -22,7 +21,8 @@ const Payment = ({setPricing}) => {
 
   const sendEmail = async () => {
     try {
-      await axios.post("http://localhost:3000/sendemail", { email });
+      console.log(email);
+      await axios.post("http://localhost:3000/sendemail", { email: email });
       toast.success("An Email has been sent to You !");
     } catch (error) {
       console.error("Error sending email:", error);
@@ -215,18 +215,22 @@ const Payment = ({setPricing}) => {
                       VAT<span>(20%)</span>
                     </p>
                     <p>
-                      <span class="fas fa-dollar-sign"></span>{Number(price)*0.2}.00
+                      <span class="fas fa-dollar-sign"></span>
+                      {Number(price) * 0.2}.00
                     </p>
                   </div>
                   <div class="d-flex align-items-center justify-content-between mb-2">
                     <p class="fw-bold">Total</p>
                     <p class="fw-bold">
-                      <span class="fas fa-dollar-sign"></span>{Number(price)*1.2}.00
+                      <span class="fas fa-dollar-sign"></span>
+                      {Number(price) * 1.2}.00
                     </p>
                   </div>
-                  <div class="btn btn-primary mt-2" onClick={sendEmail}>
-                    Check Out
-                  </div>
+                  <Link to="/congrats">
+                    <div class="btn btn-primary mt-2" onClick={sendEmail}>
+                      Check Out
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>

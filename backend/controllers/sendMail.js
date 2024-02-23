@@ -3,19 +3,20 @@ const nodemailer = require("nodemailer");
 
 const sendMail = async (req, res) => {
   try {
+    const { email } = req.body;
     let transporter = await nodemailer.createTransport({
       host: "smtp.ethereal.email",
       service: "SendGrid",
       port: 587,
       auth: {
-        user: "testAccount.user",
-        pass: "testAccount.password",
+        user: "raymundo.altenwerth@ethereal.email",
+        pass: "UgjbSZYGvkpnK6tGbE",
       },
     });
 
     const mailOptions = {
-      from: "your_email@example.com",
-      to: "recipient@example.com",
+      from: "raymundo.altenwerth@ethereal.email",
+      to: email,
       subject: "Welcome to Team Todoist!",
       html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

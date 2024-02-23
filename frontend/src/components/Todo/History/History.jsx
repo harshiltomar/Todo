@@ -13,6 +13,7 @@ console.log(id);
 let toUpdateArray = [];
 
 const History = () => {
+  console.log(id);
   const [Inputs, setInputs] = useState({ title: "", body: "" });
   const [Array, setArray] = useState([]);
 
@@ -55,11 +56,11 @@ const History = () => {
     <>
       <div className="todo d-flex">
         <div class="col-2 sidebar">
-          <Sidebar/>
+          <Sidebar />
         </div>
         <ToastContainer />
         <div className="todo-main container d-flex justify-content-center align-items-center my-4 col-7 flex-column">
-        <p>Task History ✨</p>
+          <p>Task History ✨</p>
           <div className="todo-main container d-flex justify-content-center align-items-center my-4 flex-column col-8">
             <div className="container-fluid">
               <div className="column jusity-content-center">
