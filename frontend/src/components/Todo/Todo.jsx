@@ -105,7 +105,7 @@ const Todo = () => {
         <ToastContainer />
         <div className="todo-main container d-flex justify-content-center align-items-center my-4 col-7 flex-column">
           <p>Add Your Tasks Here ✨</p>
-          <div className="d-flex flex-column todo-inputs-div w-lg-50 w-100 p-1 mt-4">
+          <div className="d-flex flex-column todo-inputs-div w-lg-50 w-100 p-1 mt-4 p-2">
             <input
               type="text"
               placeholder="TITLE"
@@ -113,7 +113,7 @@ const Todo = () => {
               onClick={show}
               name="title"
               value={Inputs.title}
-              style={{ borderBottom: "1px solid black" }}
+              style={{ borderBottom: "1px solid black " }}
               onChange={change}
             />
             <textarea
@@ -125,6 +125,18 @@ const Todo = () => {
               value={Inputs.body}
               onChange={change}
             />
+            <div className="flex">
+            <select class="mt-2 p-2 dropdown"> 
+              <option disabled selected>Select Tag</option>
+              <option class="dropdown-options">Priority</option>
+              <option class="dropdown-options">Normal</option>
+              <option class="dropdown-options">Easy</option>
+            </select>
+            </div>
+            {/* <TimePicker
+              label="Set Timer"
+              defaultValue={dayjs('2022-04-17T15:30')}
+            /> */}
           </div>
           <div className="d-flex justify-content-end">
             <button className="home-btn px-2 py-1" onClick={submit}>

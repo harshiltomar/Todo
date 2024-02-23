@@ -7,7 +7,7 @@
 }
 
 .todo-inputs {
-  border: none;
+  border-radius: 5px;
   outline: none;
 }
 
@@ -49,9 +49,8 @@
 
 .home-btn {
   background-color: rgba(255, 0, 0, 0.8);
-  margin-top: 30px;
+  margin-top: 10px;
   border-radius: 5px;
-  border-color: rgba(240, 0, 0, 0.87);
   color: aliceblue !important;
 }
 
@@ -101,4 +100,26 @@
 
 .side-menu:hover {
   background-color: rgba(255, 120, 120, 0.8);;
+}
+
+.dropdown {
+  background-color: #ffffff;
+  color:rgba(255, 0, 0, 0.8);
+  border-radius: 5px;
+  border: none;
+}
+
+.dropdown-options:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+}
+
+.select::-ms-expand {
+  display: none;
+}
+
+.select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 2px 30px 2px 2px;
 }
