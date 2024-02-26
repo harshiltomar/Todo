@@ -110,7 +110,7 @@ const Todo = () => {
     <>
       <div className="todo d-flex">
         <div class="col-2 sidebar">
-          <Sidebar/>
+          <Sidebar />
         </div>
         <ToastContainer />
         <div className="todo-main container d-flex justify-content-center align-items-center my-4 col-7 flex-column">
@@ -191,4 +191,3 @@ const Todo = () => {
 };
 
 export default Todo;
-

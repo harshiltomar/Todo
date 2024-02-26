@@ -226,13 +226,15 @@ const Payment = () => {
                       VAT<span>(20%)</span>
                     </p>
                     <p>
-                      <span class="fas fa-dollar-sign"></span>{Number(price)*0.2}.00
+                      <span class="fas fa-dollar-sign"></span>
+                      {Number(price) * 0.2}.00
                     </p>
                   </div>
                   <div class="d-flex align-items-center justify-content-between mb-2">
                     <p class="fw-bold">Total</p>
                     <p class="fw-bold">
-                      <span class="fas fa-dollar-sign"></span>{Number(price)*1.2}.00
+                      <span class="fas fa-dollar-sign"></span>
+                      {Number(price) * 1.2}.00
                     </p>
                   </div>
                   {processing? (
