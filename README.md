@@ -15,5 +15,8 @@
 
 - Payment Handline using razorpay/Paytm
 - Tags which can be added to the task
-- Timer which can be used to send email 30 mins to user email id
+- Timer which can be used to send email 30 mins to user email id [Push Notifications]
 - User Profile management system
+- Google meet integration
+- OTP 2FA
+- Task day segregation : Today, Pending Tasks

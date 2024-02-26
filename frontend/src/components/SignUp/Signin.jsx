@@ -7,6 +7,7 @@ import axios from "axios";
 import { authActions } from "../../store/index.store";
 import { Link } from "react-router-dom";
 import { PiSparkleFill } from "react-icons/pi";
+import { GoogleLogin } from 'react-google-login';
 
 const Signin = () => {
   const history = useNavigate();
@@ -15,6 +16,7 @@ const Signin = () => {
     email: "",
     password: "",
   });
+  const clientId="817582783946-d3vofuce0iss8dp6c87acvqgs5b9ca4n.apps.googleusercontent.com";
 
   const change = (e) => {
     const { name, value } = e.target;
@@ -39,6 +41,27 @@ const Signin = () => {
       }
     } catch (error) {
       console.log("An error occured", error);
+    }
+  };
+
+  // Handle Google Sign In Success
+  const responseGoogle = async (response) => {
+    try {
+      const { tokenId } = response;
+      const googleResponse = await axios.post(
+        "http://localhost:3000/api/v1/google-signin",
+        { tokenId }
+      );
+      console.log(googleResponse.data);
+      if (googleResponse.data) {
+        sessionStorage.setItem("id", googleResponse.data.user._id);
+        dispatch(authActions.login());
+        history("/todo");
+      } else {
+        console.log("Response data or _id not found in the response.");
+      }
+    } catch (error) {
+      console.log("An error occurred", error);
     }
   };
 
@@ -69,7 +92,13 @@ const Signin = () => {
               </button>
               <div class="row mt-4">
                   <div class="col-md-12">
-                    <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" href="#"><img src="https://img.icons8.com/color/16/000000/google-logo.png"/> SignIN Using Google</a>
+                    <GoogleLogin
+                    clientId={clientId}
+                    buttonText="SignIn via Google"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    //cookiePolicy={'signle_host.origin'}
+                    />
                   </div>
               </div>
               <p className="mt-4">

@@ -99,12 +99,12 @@
 }
 
 .side-menu:hover {
-  background-color: rgba(255, 120, 120, 0.8);;
+  background-color: rgba(255, 120, 120, 0.8);
 }
 
 .dropdown {
   background-color: #ffffff;
-  color:rgba(255, 0, 0, 0.8);
+  color: rgba(255, 0, 0, 0.8);
   border-radius: 5px;
   border: none;
 }

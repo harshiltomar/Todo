@@ -4,11 +4,12 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
-const Payment = ({setPricing}) => {
+const Payment = () => {
 
   const {price} = useParams();
-  
   const [activeIndex, setActiveIndex] = useState(0);
+  const [email, setEmail] = useState("");
+  const [processing, setProcessing] = useState(false);
 
   const nextSlide = () => {
     setActiveIndex((prevIndex) => (prevIndex === 2 ? 0 : prevIndex + 1));
@@ -18,17 +19,27 @@ const Payment = ({setPricing}) => {
     setActiveIndex((prevIndex) => (prevIndex === 0 ? 2 : prevIndex - 1));
   };
 
-  const [email, setEmail] = useState("");
 
   const sendEmail = async () => {
     try {
       await axios.post("http://localhost:3000/sendemail", { email });
-      toast.success("An Email has been sent to You !");
+      toast.success("Congrats for Joining TODOist. An Email has been sent to You !");
     } catch (error) {
       console.error("Error sending email:", error);
       toast.error("Error sending email.Please try again");
     }
   };
+
+  //Basicaly delay on same page for 2 s and then trigger goto congrats page
+  const handleCheckout= ()=> {
+    setProcessing(true);
+
+    setTimeout (()=> {
+      setProcessing(false);
+      sendEmail();
+    }, 2000);
+    // <Link to="/congrats"/>
+  }
 
   return (
     <div class="mr-4 container d-flex">
@@ -224,9 +235,16 @@ const Payment = ({setPricing}) => {
                       <span class="fas fa-dollar-sign"></span>{Number(price)*1.2}.00
                     </p>
                   </div>
-                  <div class="btn btn-primary mt-2" onClick={sendEmail}>
+                  {processing? (
+                    <div className="processing-card">
+                      <p>Processing Payment...</p>
+                    </div>
+                  ): (
+                    <div class="btn btn-primary mt-2" onClick={handleCheckout}>
                     Check Out
                   </div>
+                  )}
+
                 </div>
               </div>
             </div>

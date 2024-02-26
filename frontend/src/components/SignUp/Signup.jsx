@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./Signup.css";
 import HeadingComp from "./HeadingComp";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { PiSparkleFill } from "react-icons/pi";
+import { GoogleLogin } from 'react-google-login';
+import { authActions } from "../../store/index.store";
 
 const Signup = () => {
   const history = useNavigate();
+  const dispatch = useDispatch();
   const [Inputs, setInputs] = useState({
     email: "",
     username: "",
     password: "",
   });
+  const clientId="817582783946-d3vofuce0iss8dp6c87acvqgs5b9ca4n.apps.googleusercontent.com";
+
 
   const change = (e) => {
     const { name, value } = e.target;
@@ -39,6 +45,27 @@ const Signup = () => {
           history("/signin");
         }
       });
+  };
+
+  //SUBMIT CODE FOR BACKEND INTEGRATION
+  const responseGoogle = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/v1/signin",
+        Inputs
+      );
+      console.log(response.data);
+      if (response.data) {
+        sessionStorage.setItem("id", response.data.user._id);
+        dispatch(authActions.login());
+        history("/todo");
+      } else {
+        console.log("Respone data or _id not found in the response. ");
+      }
+    } catch (error) {
+      console.log("An error occured", error);
+    }
   };
 
   return (
@@ -75,15 +102,15 @@ const Signup = () => {
                 Sign Up
               </button>
               <div class="row mt-4">
-                <div class="col-md-12">
-                  <a
-                    class="btn btn-lg btn-google btn-block text-uppercase btn-outline"
-                    href="#"
-                  >
-                    <img src="https://img.icons8.com/color/16/000000/google-logo.png" />{" "}
-                    Signup Using Google
-                  </a>
-                </div>
+                  <div class="col-md-12">
+                    <GoogleLogin
+                    clientId={clientId}
+                    buttonText="SignIn via Google"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    //cookiePolicy={'signle_host.origin'}
+                    />
+                  </div>
               </div>
               <p className="mt-4">
                 Already a register user ?{" "}

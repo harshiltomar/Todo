@@ -3,7 +3,7 @@ import "./Todo.css";
 import { MdDelete } from "react-icons/md";
 import { GrDocumentUpdate } from "react-icons/gr";
 import { IoMdDoneAll } from "react-icons/io";
-import { CiSquareCheck } from "react-icons/ci";
+import { FaCheckSquare } from "react-icons/fa";
 
 const TodoCards = ({
   title,
@@ -24,7 +24,7 @@ const TodoCards = ({
             tickid(id);
           }}
         >
-          <CiSquareCheck style={{ color: "white" }} class="m-1 mr-2" />
+          <FaCheckSquare style={{ color: "white" }} class="m-1 mr-2" />
         </div>
         <div className="d-flex flex-column">
           <h5 style={{ color: "white" }}>{title}</h5>

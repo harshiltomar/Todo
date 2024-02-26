@@ -54,7 +54,9 @@ router.delete("/deleteTask/:id", async (req, res) => {
 
 // GET TASK
 router.get("/getTasks/:id", async (req, res) => {
-  const list = await List.find({ user: req.params.id }).sort({ createdAt: -1 });
+  const list = await List.find({ user: req.params.id }).sort({ 
+    createdAt: -1 
+  });
   if (list.length !== 0) {
     res.status(200).json({ list });
   } else {

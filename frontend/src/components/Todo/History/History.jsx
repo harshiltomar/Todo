@@ -41,12 +41,14 @@ const History = () => {
 
   useEffect(() => {
     const fetchHistoryTasks = async () => {
+      if(id) {
       await axios
         .get(`http://localhost:3000/api/v3/historyTask/${id}`, { id: id })
         .then((response) => {
           setArray(response.data.list);
           console.log(response.data.list);
         });
+      };
     };
     fetchHistoryTasks();
   }, []); // Run only once when component mounts

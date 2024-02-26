@@ -6,6 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Update from "./Update";
 import axios from "axios";
 import Sidebar from "../Sidebar";
+import { BsAlarm, BsTag } from "react-icons/bs";
+import "react-datepicker/dist/react-datepicker.css";
 
 let id = sessionStorage.getItem("id");
 let toUpdateArray = [];
@@ -13,7 +15,9 @@ let toUpdateArray = [];
 const Todo = () => {
   const [Inputs, setInputs] = useState({ title: "", body: "" });
   const [Array, setArray] = useState([]);
+  const [selectedTime, setSelectedTime]= useState(0);
 
+  const times = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM"];
   const show = () => {
     document.getElementById("textarea").style.display = "block";
   };
@@ -22,6 +26,12 @@ const Todo = () => {
     const { name, value } = e.target;
     setInputs({ ...Inputs, [name]: value });
   };
+
+  const handleTimeChange = (e) => {
+    console.log(e);
+    setSelectedTime(e);
+  };
+
 
   const submit = async () => {
     if (Inputs.title === "" || Inputs.body === "") {
@@ -125,18 +135,22 @@ const Todo = () => {
               value={Inputs.body}
               onChange={change}
             />
-            <div className="flex">
-            <select class="mt-2 p-2 dropdown"> 
-              <option disabled selected>Select Tag</option>
-              <option class="dropdown-options">Priority</option>
-              <option class="dropdown-options">Normal</option>
-              <option class="dropdown-options">Easy</option>
-            </select>
+            <div className="d-flex">
+              <select class="mt-2 p-2 dropdown"> 
+                <option disabled selected><BsTag />Select Tag</option>
+                <option class="dropdown-options">Priority</option>
+                <option class="dropdown-options">Normal</option>
+                <option class="dropdown-options">Easy</option>
+              </select>
+              <select class="mt-2 mx-2 p-2 dropdown" onChange={(e)=> handleTimeChange(e.target.value)}> 
+                <option disabled selected><BsAlarm />Set Alarm</option>
+                {times.map((time, index) => (
+                  <option key={index} className="dropdown-options" value={time}>
+                    {time}
+                  </option>
+                ))}
+              </select>              
             </div>
-            {/* <TimePicker
-              label="Set Timer"
-              defaultValue={dayjs('2022-04-17T15:30')}
-            /> */}
           </div>
           <div className="d-flex justify-content-end">
             <button className="home-btn px-2 py-1" onClick={submit}>
